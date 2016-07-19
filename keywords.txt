@@ -1,0 +1,8 @@
+PingSerial	KEYWORD1
+begin	KEYWORD2
+data_available   KEYWORD2
+get_distance   KEYWORD2
+get_temperature   KEYWORD2
+request_distance   KEYWORD2
+request_temperature   KEYWORD2
+display_debugging   KEYWORD2
