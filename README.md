@@ -14,6 +14,8 @@ The problem here is twofold:
 1. Far too much sample code does this timing in a blocking way (either using pulseIn(), which is a blocking API, or using the NewPing library in a blocking way), which is not useful for real world devices..
 2. The NewPing library (which is very good, and supports a wide range of devices!) can be used in a timer interrupt driven way, which avoids the blocking issues.  However, the accuracy and precision is limited by how quickly the change is pin state will be noticed.  Measurements tend to be slightly high, and vary noticeably on repeated measurements, both due to the variable delay in noticing the echo pin state change affecting the perceived echo timing.
 
+It may be possible to use these devices with pin-change interrupts, but that would not necessarily fix all the issues.
+
 Though these are the cheapest devices by far (£1.39 including postage from China, as of July 2016) I cannot recommend using them, given the relative cost and far superior performance of the serial models.
 
 This library does not handle these devices - the NewPing library already exists for that and is very good.
