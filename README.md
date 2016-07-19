@@ -1,11 +1,12 @@
 # PingSerial
 Arduino library for using serial enabled ultrasonic distance modules (eg. US-100)
 
+## Background
 There are two common types of cheap ultrasonic distance modules listed below, which are both very similar from a hardware perspective.  They both have an ultrasonic transmitter and a matching receiver, with a small amount of logic on board to talk to the connected microcontroller (such as an Arduino).  They both claim similar specifications (ranging distance from 20-4500mm, with resolution of a few mm, and a measuring angle of 15 degrees)
 
 This library assumes that, unlike the rather simplistic first-attempt examples of how to use these devices, the devices will be used in a complex environment where the controller cannot block for any significant time and where accuracy and precision of measurements matter (ie. both the right measurement is returned, and that measurement has small variation if repeated).
 
-## Trigger/Echo models
+### Trigger/Echo models
 The cheapest and most common devices are the family of devices that use trigger/echo pins to make measurements.  HC-SR04 is a common example sold on ebay, though there are a large number of devices out there.  Sometimes a different model number just indicates a different design, manufacturer, or Chinese clone, while sometimes there are actual differences in the behaviour.
 
 The devices operate by the microcontroller signaling to the device to perform a measurement by toggling the trigger line briefly (10s of microseconds), and then waiting for the echo pin to be toggled to indicate the ultrasonic pulse has been returned.  Measuring the time the echo takes allows us to infer the distance to the nearest object.
@@ -20,7 +21,7 @@ Though these are the cheapest devices by far (£1.39 including postage from Chin
 
 This library does not handle these devices - the NewPing library already exists for that and is very good.
 
-## Serial models
+### Serial models
 The less common and more expensive devices are the family of devices that use a TTL serial communication to make measurements.  US-100 is a common example sold on ebay.
 
 These cost fractionally more than the Trigger/Echo models (£2.32 including postage from China, as of July 2016), but I cannot imagine a usage scenario where this difference in cost will be an issue, given the far superior performance of the US-100 and similar models.
@@ -36,12 +37,17 @@ These devices are not without foibles however!  This library aims to hide most o
 
 Note: US-100 in particular can operate in either Trigger/Echo mode or Serial mode.  Thought if you've got the device I think you'd be mad to use it in the Trigger/Echo mode for the reasons already given!
 
-# Examples
+## Installation
+Download the zip file (link below) then install as you would any other library (instructions below).
+
+## Examples
 Two examples are provided:
  1. PingSerialDistance: Only requests distance measurements, and uses the hardware serial port on a non-Leonardo device (which requires a SoftwareSerial if your sketch needs to output debugging information over a serial port)
  1. PingSerialDistanceTemperature: Requests both distance and temperature measurements, while using both Leonardo's hardware serial port (Serial1) for the US-100 plus the serial-over-USB Serial port for debugging information
 
-# References
+## References
+ * Download link: https://github.com/stoduk/PingSerial/archive/master.zip
+ * How to install libraries (see section on installing from zip file): https://www.arduino.cc/en/Guide/Libraries.  
  * NewPing library - very good for Trigger/Echo devices: http://playground.arduino.cc/Code/NewPing
  * US-100 on Banana Robotics (has some background details): https://www.bananarobotics.com/shop/US-100-Ultrasonic-Distance-Sensor-Module
  * Comparison of US-100 and HC-SR04 devices (also see comments): https://arduibots.wordpress.com/2013/10/14/comparison-of-ultrasonic-sensors-us-100-and-hc-sr04/ and https://arduibots.wordpress.com/2014/10/12/us-100-ultrasonic-sensor-in-serial-mode/
