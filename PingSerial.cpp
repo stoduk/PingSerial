@@ -69,6 +69,8 @@ PingSerial::PingSerial (byte         rx_pin,
 int
 PingSerial::read (uint8_t count=1)
 {
+    // A read of more than one byte implicitly discards
+    // the values.
     uint8_t i;
 
     if (_hw_serial) {
@@ -88,6 +90,8 @@ PingSerial::read (uint8_t count=1)
             }
         }
     }
+
+    return 0; // Multi-byte read, return anything, it will be ignored.
 }
 
 size_t
@@ -150,7 +154,7 @@ PingSerial::data_available (void)
                 // Something is screwy - garbage from US-100, noise on serial port, or a bug here
                 DBG_PRINT("Distance available too large: ");
                 DBG_PRINTLN(available);
-                read(available); // read and discard all available
+                (void) read(available); // read and discard all available
                 _distance_pending = FALSE;
                 request_distance();
             } else {
@@ -170,7 +174,7 @@ PingSerial::data_available (void)
                 // As above, something screwy again, clear it out and try again
                 DBG_PRINT("Temperature available too large: ");
                 DBG_PRINTLN(available);
-                read(available); // read and discard all available
+                (void) read(available); // read and discard all available
                 _temperature_pending = FALSE;
                 request_temperature();
             } else {
@@ -195,7 +199,7 @@ PingSerial::data_available (void)
         } else {
             available = _sw_serial->available();
         }
-        read(available);
+        (void) read(available);
 
         DBG_PRINT("Operation timed out (");
         DBG_PRINT(available);

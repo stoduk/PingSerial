@@ -88,7 +88,7 @@ class PingSerial {
       void display_debugging(bool clear=FALSE);
 
   private:
-      void Init(unsigned int min_mm_distance, unsigned int max_mm_distance);
+      void Init(uint16_t min_mm_distance, uint16_t max_mm_distance);
 
       // Wrappers to call underlying function on hardware or software serial object
       int read(uint8_t count); // adds 'count' argument; if not 1 then all read bytes will be discarded
