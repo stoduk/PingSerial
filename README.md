@@ -45,6 +45,12 @@ Two examples are provided:
  1. PingSerialDistance: Only requests distance measurements, and uses the hardware serial port on a non-Leonardo device (which requires a SoftwareSerial if your sketch needs to output debugging information over a serial port)
  1. PingSerialDistanceTemperature: Requests both distance and temperature measurements, while using both Leonardo's hardware serial port (Serial1) for the US-100 plus the serial-over-USB Serial port for debugging information
 
+## Caveats
+ 1. To use a SoftwareSerial to talk to the US-100 requires manually modifying the PingSerial.h file to add ```#define PS_INCLUDE_SOFTWARESERIAL``` before the ```#ifdef PS_INCLUDE_SOFTWARESERIAL``` check.  If anyone has better ideas on how to do this, I'm all ears.
+ 
+ 
+ 
+ 
 ## References
  * Download link: https://github.com/stoduk/PingSerial/archive/master.zip
  * How to install libraries (see section on installing from zip file): https://www.arduino.cc/en/Guide/Libraries.  
