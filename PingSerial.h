@@ -72,7 +72,7 @@ class PingSerial {
 
       // Reads data from serial connection to US-100.
       // Returns value with DISTANCE or TEMPERATURE flags set indicating which values are available
-      // (not necessarily just received, the flags are cleared only when the values are retrieved). 
+      // (not necessarily just received, the flags are cleared only when the values are retrieved).
       byte data_available(void);
 
       // Get the stored values, if data_available() indicates a value is available.  Returns zero on error (which could be a valid temperature).
@@ -112,7 +112,7 @@ class PingSerial {
       uint16_t _distance = 0; // Distance is always positive, max (255 * 256 + 255) = 65535
       int _temperature = 0; // Temperature returned is (byte) - 45 (so ranges from -45 to 256-45)
 
-      // If values are out of range then distance returned will be 0 or UINT16_MAX respectively 
+      // If values are out of range then distance returned will be 0 or UINT16_MAX respectively
       uint16_t _min_mm_distance = 0;
       uint16_t _max_mm_distance = UINT16_MAX;
 
@@ -128,4 +128,4 @@ class PingSerial {
       bool _distance_request_queued = FALSE;
       bool _temperature_request_queued = FALSE;
 };
-#endif __PINGSERIAL_H__
+#endif // __PINGSERIAL_H__
