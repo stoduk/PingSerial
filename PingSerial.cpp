@@ -188,11 +188,7 @@ PingSerial::data_available (void)
 
     if (OPERATION_PENDING && (millis() > _op_started + _op_timeout_ms)) {
         // Operation timed out - discard all pending serial data, and kick it off again
-
-        // Increment counter but make sure if we've looped we set it to 1
-        // (we've lost info, but better than thinking we've had no timeouts)
         _timeout_count++;
-        _timeout_count = max(_timeout_count, 1); 
 
         if (_hw_serial) {
             available = _hw_serial->available();

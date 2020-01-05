@@ -106,7 +106,7 @@ class PingSerial {
       unsigned long _op_started = 0;
       unsigned long _max_op_duration_ms = 0;
       uint16_t      _op_timeout_ms = 0;
-      uint16_t      _timeout_count = 0;
+      uint32_t      _timeout_count = 0;
 
       // Stored values
       uint16_t _distance = 0; // Distance is always positive, max (255 * 256 + 255) = 65535
