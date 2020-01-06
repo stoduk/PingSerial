@@ -192,7 +192,7 @@ PingSerial::data_available (void)
         // Increment counter but make sure if we've looped we set it to 1
         // (we've lost info, but better than thinking we've had no timeouts)
         _timeout_count++;
-        _timeout_count = max(_timeout_count, 1); 
+        _timeout_count = max(_timeout_count, (uint16_t)1);
 
         if (_hw_serial) {
             available = _hw_serial->available();
