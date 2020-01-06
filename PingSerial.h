@@ -104,7 +104,7 @@ class PingSerial {
 
       // Internal state, mostly for debugging purposes (see display_debugging())
       unsigned long _op_started = 0;
-      uint16_t      _max_op_duration_ms = 0;
+      unsigned long _max_op_duration_ms = 0;
       uint16_t      _op_timeout_ms = 0;
       uint16_t      _timeout_count = 0;
 
